@@ -27,7 +27,7 @@ public class XorEncryption extends MiniJava {
       else if (s.charAt(i) == '.')
         textArray[i] = 63;
       else {
-        write("Ungültiges Zeichen!");
+        write("Invalid character");
         return;
       }
       i++;
