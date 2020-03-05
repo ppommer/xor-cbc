@@ -91,6 +91,5 @@ public class XorEncryption extends MiniJava {
     }
     write(result);
   }
-
 }
 
