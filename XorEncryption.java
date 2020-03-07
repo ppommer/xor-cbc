@@ -1,13 +1,47 @@
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-public class XorEncryption extends MiniJava {
+public class XorEncryption {
+
+  public static int readInt(String text) {
+    JFrame frame = new JFrame();
+    String s = JOptionPane.showInputDialog(frame, text);
+    frame.dispose();
+
+    int x;
+    if (s == null)
+      System.exit(0);
+    try {
+      x = Integer.parseInt(s.trim());
+    } catch (NumberFormatException e) {
+      x = readInt(text);
+    }
+    return x;
+  }
+
+  public static String readString(String text) {
+    JFrame frame = new JFrame();
+    String s = JOptionPane.showInputDialog(frame, text);
+    frame.dispose();
+
+    if (s == null)
+      System.exit(0);
+    return s;
+  }
+
+  public static void write(String output) {
+    JFrame frame = new JFrame();
+    JOptionPane.showMessageDialog(frame, output, "Output", JOptionPane.PLAIN_MESSAGE);
+    frame.dispose();
+  }
 
   public static void main(String[] args) {
-    int key = read("Please enter a key between 0 and 63:");
+    int key = readInt("Please enter a key between 0 and 63:");
     while (key < 0 || key > 63)
-      key = read("Wrong input");
-    int cbc_initial = read("Please enter an initialization vector between 0 and 63:");
+      key = readInt("Wrong input! Enter again:");
+    int cbc_initial = readInt("Please enter an initialization vector between 0 and 63:");
     while (cbc_initial < 0 || cbc_initial > 63)
-      cbc_initial = read("Wrong input");
+      cbc_initial = readInt("Wrong input! Enter again:");
 
     String s = readString("Please enter the plaintext:");
 
@@ -92,4 +126,3 @@ public class XorEncryption extends MiniJava {
     write(result);
   }
 }
-
